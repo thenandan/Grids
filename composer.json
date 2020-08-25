@@ -24,6 +24,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
+        "laravelcollective/html": "v6.*",
         "illuminate/support": ">=4.2",
         "nayjest/builder": "~2"
     },

@@ -2,23 +2,15 @@ Grids
 =====
 
 ### `Data Grids Framework for Laravel`
+This package is forked from [Nayjest/Grids](https://github.com/Nayjest/Grids)
 
-[![Codacy Badge](https://www.codacy.com/project/badge/4c6955da466a45c1a64972bbfb81fcb7)](https://www.codacy.com/public/mail_2/Grids)
-[![Code Climate](https://codeclimate.com/github/Nayjest/Grids/badges/gpa.svg)](https://codeclimate.com/github/Nayjest/Grids)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Nayjest/Grids/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Nayjest/Grids/?branch=master)
-[![Circle CI](https://circleci.com/gh/Nayjest/Grids/tree/master.svg?style=svg)](https://circleci.com/gh/Nayjest/Grids/tree/master)
-[![Release](https://img.shields.io/packagist/v/nayjest/grids.svg)](https://packagist.org/packages/nayjest/grids)
-[![Join the chat at https://gitter.im/Nayjest/Grids](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Nayjest/Grids?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-Laravel 4.X, Laravel 5.X and Laravel 6 are supported.
-
-- Pull-requests from 3rd-party contributors containing new features can be accepted to nayjest/grids just in case when it doesn't break backward compatibility. If you have some radical improvements, please contribute to [view-components/grids](https://github.com/view-components/grids).
+Laravel 5+ supported.
 
 ## Features
 * Data providers (php array, Eloquent model, Doctrine DBAL query object)
 * Themes support
 * Individual views for UI components
-* Twitter Bootstrap v3 used by default
+* Twitter Bootstrap used by default (Version Configurable)
 * Caching
 * Smart input handling allows to avoid conflicts with get parameters & easily place few interactive grids on same page
 * Rich customization facilities
@@ -35,78 +27,21 @@ Laravel 4.X, Laravel 5.X and Laravel 6 are supported.
   - Pagination
   - etc
 
-## Upcoming Features (moved to view-components/grids)
-* Autodetecting columns based on Eloquent model (if not specified)
-* Builtin output formatters for different column types
-* Working with json data sources via ajax
-* Check compatibility with Lumen microframework
-
 
 ## Requirements
 
-* Laravel 4.X / 5.X / 6.X
-* laravelcollective/html package if you use Laravel5.X
-* php 5.4+
+* Laravel >= 5+
+* laravelcollective/html
+* php >= 7.1
 
 ## Installation
 
-##### Step 1: Install package using [Composer](https://getcomposer.org)
-
-Add nayjest/grids to "require" section of your composer.json
-
-```javascript
-"require": {
-    "nayjest/grids": "^2.0.0"
-},
-```
-
-For Laravel 5 you also need to add "laravelcollective/html":
-
-```javascript
-"require": {
-    "nayjest/grids": "^2.0.0",
-    "laravelcollective/html": "^5"
-},
-```
-
-Then install dependencies using following command:
-```bash    
-php composer.phar install
-```
-
-Instead of editing composer.json and executing _composer install_ you can just run following command:
-
-For Laravel 4
-```bash    
-php composer.phar require nayjest/grids
-```
-For Laravel 5 / Laravel 6
-```bash    
-php composer.phar require nayjest/grids laravelcollective/html
-```
-
-##### Step 2: Laravel Setup
-Add following line to 'providers' section of app/config/app.php file:
-```php
-'TheNandan\Grids\ServiceProvider',
-```
-For Laravel 5 / 6 you also need to add "illuminate/html" service provider:
-```php
-'TheNandan\Grids\ServiceProvider',
-'Collective\Html\HtmlServiceProvider',
-```
-
-You may also add facade aliases to your application configuration:
-```php
-    'Form'  => 'Collective\Html\FormFacade',
-    'HTML'  => 'Collective\Html\HtmlFacade',
-    'Grids'     => 'TheNandan\Grids\Grids',
+```composer 
+    composer require thenandan/laravel-grid
 ```
 ## Demo
 
-Demonstration available [here](http://grids-demo.herokuapp.com/demo/example4)
-
-[Code](https://github.com/Nayjest/grids-demo)
+Please refer [Nayjest/Grids](https://github.com/Nayjest/Grids) Demo
 
 
 
