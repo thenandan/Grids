@@ -13,7 +13,7 @@
         "laravel5"
     ],
     "homepage": "https://github.com/Nayjest/Grids",
-    "type": "library",
+    "type": "laravel-library",
     "license": "MIT",
     "authors": [
         {
