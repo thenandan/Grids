@@ -12,6 +12,19 @@
         "laravel-5",
         "laravel5"
     ],
+    "config": {
+        "secure-http": false,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "github-protocols": [
+            "git",
+            "https"
+        ],
+        "discard-changes": true,
+        "optimize-autoloader": true,
+        "classmap-authoritative": true
+    },
     "homepage": "https://github.com/thenandan/laravel-grid",
     "type": "laravel-library",
     "license": "proprietary",
@@ -37,5 +50,12 @@
             "TheNandan\\Grids\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TheNandan\\Grids\\LaravelGridServiceProvider"
+            ]
+        }
+    }
 }
