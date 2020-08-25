@@ -1,4 +1,4 @@
-<?php namespace Nayjest\Grids;
+<?php namespace TheNandan\Grids;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -14,7 +14,7 @@ class ServiceProvider extends BaseServiceProvider
 
     /**
      * This method required for backward compatibility with Laravel 4.
-     * 
+     *
      * @deprecated
      * @return string
      */

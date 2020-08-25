@@ -1,4 +1,4 @@
-<?php /** @var Nayjest\Grids\Components\ColumnsHider $component */ ?>
+<?php /** @var TheNandan\Grids\Components\ColumnsHider $component */ ?>
 <span data-role="columns-hider" id="<?= $component->getId('container') ?>" >
     <button
         id="<?= $component->getId('btn') ?>"
@@ -23,7 +23,7 @@
                 </label>
             </li>
             <?php foreach($columns as $column):
-            /** @var Nayjest\Grids\FieldConfig $column */
+            /** @var TheNandan\Grids\FieldConfig $column */
             ?>
             <li>
                 <label>

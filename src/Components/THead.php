@@ -1,12 +1,12 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
 /**
  * Class THead
  *
  * The component for rendering THEAD html tag inside grid.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class THead extends HtmlTag
 {
@@ -15,7 +15,7 @@ class THead extends HtmlTag
     /**
      * Returns default set of child components.
      *
-     * @return \Nayjest\Grids\Components\Base\ComponentInterface[]
+     * @return \TheNandan\Grids\Components\Base\ComponentInterface[]
      */
     protected function getDefaultComponents()
     {

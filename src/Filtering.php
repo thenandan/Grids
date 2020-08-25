@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 use Illuminate\Support\Collection;
 
@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
  *
  * This class manages data filtering.
  *
- * @package Nayjest\Grids
+ * @package TheNandan\Grids
  */
 class Filtering
 {

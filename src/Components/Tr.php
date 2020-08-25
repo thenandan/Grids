@@ -1,14 +1,14 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\DataRowInterface;
+use TheNandan\Grids\DataRowInterface;
 
 /**
  * Class Tr
  *
  * The component for rendering TR html tag inside grid.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class Tr extends HtmlTag
 {

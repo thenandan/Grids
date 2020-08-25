@@ -1,12 +1,12 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 /**
  * Class DataRow
  *
  * Abstract class for DataRowInterface implementations
  *
- * @package Nayjest\Grids
+ * @package TheNandan\Grids
  */
 abstract class DataRow implements DataRowInterface
 {

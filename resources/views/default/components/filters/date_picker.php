@@ -1,5 +1,5 @@
 <?php
-/** @var Nayjest\Grids\Components\Filter $component */
+/** @var TheNandan\Grids\Components\Filter $component */
 $id = uniqid();
 ?>
 <?php if($component->getLabel()): ?>

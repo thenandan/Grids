@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 use View;
 

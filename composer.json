@@ -1,6 +1,6 @@
 {
-    "name": "nayjest/grids",
-    "description": "Grids for Laravel 4 & Laravel 5 frameworks",
+    "name": "thenandan/laravel-grid",
+    "description": "Grids for Laravel 5 + frameworks",
     "keywords": [
         "grid",
         "tables",
@@ -12,18 +12,18 @@
         "laravel-5",
         "laravel5"
     ],
-    "homepage": "https://github.com/Nayjest/Grids",
+    "homepage": "https://github.com/thenandan/laravel-grid",
     "type": "laravel-library",
-    "license": "MIT",
+    "license": "proprietary",
     "authors": [
         {
-            "name": "Vitalii [Nayjest] Stepanenko",
-            "email": "mail@vitaliy.in",
+            "name": "Keshari Nandan",
+            "email": "thenandan4@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.1.0",
         "illuminate/support": ">=4.2",
         "nayjest/builder": "~2"
     },
@@ -33,13 +33,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Nayjest\\Grids\\": "src/"
+            "TheNandan\\Grids\\": "src/"
         }
-    },
-    "support": {
-        "email": "mail@vitaliy.in",
-        "source": "https://github.com/Nayjest/Grids",
-        "issues": "https://github.com/Nayjest/Grids/issues"
     },
     "minimum-stability": "dev"
 }
