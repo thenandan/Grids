@@ -88,11 +88,11 @@ php composer.phar require nayjest/grids laravelcollective/html
 ##### Step 2: Laravel Setup
 Add following line to 'providers' section of app/config/app.php file:
 ```php
-'Nayjest\Grids\ServiceProvider',
+'TheNandan\Grids\ServiceProvider',
 ```
 For Laravel 5 / 6 you also need to add "illuminate/html" service provider:
 ```php
-'Nayjest\Grids\ServiceProvider',
+'TheNandan\Grids\ServiceProvider',
 'Collective\Html\HtmlServiceProvider',
 ```
 
@@ -100,7 +100,7 @@ You may also add facade aliases to your application configuration:
 ```php
     'Form'  => 'Collective\Html\FormFacade',
     'HTML'  => 'Collective\Html\HtmlFacade',
-    'Grids'     => 'Nayjest\Grids\Grids',
+    'Grids'     => 'TheNandan\Grids\Grids',
 ```
 ## Demo
 
@@ -315,7 +315,7 @@ Quick links:
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 ```
-* Nayjest\Grids\Components\Pager component works only with Laravel 4.X, for Laravel 5 / 6 use Nayjest\Grids\Components\Laravel5\Pager
+* TheNandan\Grids\Components\Pager component works only with Laravel 4.X, for Laravel 5 / 6 use TheNandan\Grids\Components\Laravel5\Pager
 
 ##### Working with related Eloquent models
 

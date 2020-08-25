@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids\Build;
+namespace TheNandan\Grids\Build;
 
 use Closure;
 use DB;
@@ -17,8 +17,8 @@ use Nayjest\Builder\Instructions\Mapping\CustomMapping;
 use Nayjest\Builder\Instructions\Mapping\Rename;
 use Nayjest\Builder\Instructions\SimpleValueAsField;
 use Nayjest\Builder\Scaffold;
-use Nayjest\Grids\Build\Instructions\BuildDataProvider;
-use Nayjest\Grids\EloquentDataProvider;
+use TheNandan\Grids\Build\Instructions\BuildDataProvider;
+use TheNandan\Grids\EloquentDataProvider;
 
 /**
  * Class Setup
@@ -29,14 +29,14 @@ use Nayjest\Grids\EloquentDataProvider;
  * @See \Grids::make
  *
  * @internal
- * @package Nayjest\Grids\Build
+ * @package TheNandan\Grids\Build
  */
 class Setup
 {
-    const COLUMN_CLASS = 'Nayjest\Grids\FieldConfig';
-    const COMPONENT_CLASS = 'Nayjest\Grids\Components\Base\ComponentInterface';
-    const GRID_CLASS = 'Nayjest\Grids\GridConfig';
-    const FILTER_CLASS = 'Nayjest\Grids\FilterConfig';
+    const COLUMN_CLASS = 'TheNandan\Grids\FieldConfig';
+    const COMPONENT_CLASS = 'TheNandan\Grids\Components\Base\ComponentInterface';
+    const GRID_CLASS = 'TheNandan\Grids\GridConfig';
+    const FILTER_CLASS = 'TheNandan\Grids\FilterConfig';
 
     /**
      * @var BlueprintsCollection
@@ -121,11 +121,11 @@ class Setup
 
             new CustomInstruction(function (Scaffold $s) {
                 if ($s->input instanceof Closure) {
-                    $s->class = 'Nayjest\Grids\Components\RenderFunc';
+                    $s->class = 'TheNandan\Grids\Components\RenderFunc';
                     $s->constructor_arguments = [$s->input];
                     $s->input = [];
                 } elseif (is_string($s->input)) {
-                    $s->class = 'Nayjest\Grids\Components\RenderFunc';
+                    $s->class = 'TheNandan\Grids\Components\RenderFunc';
                     $out = $s->input;
                     $s->constructor_arguments = [function () use ($out) {
                         return $out;
@@ -137,7 +137,7 @@ class Setup
                 if (strpos($type, '\\') !== false) {
                     $s->class = $type;
                 } else {
-                    $s->class = 'Nayjest\Grids\Components\\' . str_replace(
+                    $s->class = 'TheNandan\Grids\Components\\' . str_replace(
                             ' ',
                             '',
                             ucwords(str_replace(array('-', '_'), ' ', $type))
@@ -166,7 +166,7 @@ class Setup
             new CustomMapping('type', function ($type, Scaffold $s) {
                 switch($type) {
                     case 'select':
-                        $s->class = 'Nayjest\Grids\SelectFilterConfig';
+                        $s->class = 'TheNandan\Grids\SelectFilterConfig';
                         break;
                     default:
                         break;

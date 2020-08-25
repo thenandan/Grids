@@ -1,15 +1,15 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 use Nayjest\Builder\Env;
-use Nayjest\Grids\Build\Setup;
+use TheNandan\Grids\Build\Setup;
 
 /**
  * Class Grids
  *
  * Facade for constructing grids using configurations.
  *
- * @package Nayjest\Grids
+ * @package TheNandan\Grids
  */
 class Grids {
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\FieldConfig;
+use TheNandan\Grids\FieldConfig;
 
 /**
  * Class TableCell
- * 
+ *
  * The component for rendering TD html tag inside grid.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class TableCell extends HtmlTag
 {

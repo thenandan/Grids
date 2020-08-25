@@ -1,14 +1,14 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\Components\Base\RenderableComponent;
+use TheNandan\Grids\Components\Base\RenderableComponent;
 
 /**
  * Class ColumnsHider
  *
  * The component renders control for showing/hiding columns.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class ColumnsHider extends RenderableComponent
 {

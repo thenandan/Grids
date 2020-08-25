@@ -1,5 +1,5 @@
 <?php
-/** @var Nayjest\Grids\Components\SelectFilter $component */
+/** @var TheNandan\Grids\Components\SelectFilter $component */
 $value = $component->getValue();
 if (!is_array($value)) $value = [];
 $id = uniqid() . mt_rand();

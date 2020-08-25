@@ -1,12 +1,12 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 /**
  * Class Sorter
  *
  * Data sorting manager.
  *
- * @package Nayjest\Grids
+ * @package TheNandan\Grids
  */
 class Sorter
 {
@@ -17,7 +17,7 @@ class Sorter
 
     /**
      * Constructor.
-     * 
+     *
      * @param Grid $grid
      */
     public function __construct(Grid $grid)

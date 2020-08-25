@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 use Illuminate\Database\Eloquent\Builder;
 use Event;
@@ -131,19 +131,19 @@ class EloquentDataProvider extends DataProvider
                 $operator = '=';
                 break;
             case "n_eq":
-                $operator = '<>';    
+                $operator = '<>';
                 break;
             case "gt":
-                $operator = '>';    
+                $operator = '>';
                  break;
             case "lt":
-                $operator = '<';    
+                $operator = '<';
                 break;
             case "ls_e":
-                $operator = '<=';    
+                $operator = '<=';
                 break;
             case "gt_e":
-                $operator = '>=';    
+                $operator = '>=';
                 break;
             case "in":
                 if (!is_array($value)) {

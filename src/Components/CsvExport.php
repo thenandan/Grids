@@ -1,16 +1,16 @@
 <?php
 
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
 use Event;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Response;
-use Nayjest\Grids\Components\Base\RenderableComponent;
-use Nayjest\Grids\Components\Base\RenderableRegistry;
-use Nayjest\Grids\DataProvider;
-use Nayjest\Grids\DataRow;
-use Nayjest\Grids\Grid;
+use TheNandan\Grids\Components\Base\RenderableComponent;
+use TheNandan\Grids\Components\Base\RenderableRegistry;
+use TheNandan\Grids\DataProvider;
+use TheNandan\Grids\DataRow;
+use TheNandan\Grids\Grid;
 
 /**
  * Class CsvExport
@@ -18,7 +18,7 @@ use Nayjest\Grids\Grid;
  * The component provides control for exporting data to CSV.
  *
  * @author: Vitaliy Ofat <i@vitaliy-ofat.com>
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class CsvExport extends RenderableComponent
 {

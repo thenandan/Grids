@@ -1,10 +1,10 @@
 <?php
 
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\Components\Base\RenderableComponent;
-use Nayjest\Grids\Components\Base\RenderableRegistry;
-use Nayjest\Grids\FieldConfig;
+use TheNandan\Grids\Components\Base\RenderableComponent;
+use TheNandan\Grids\Components\Base\RenderableRegistry;
+use TheNandan\Grids\FieldConfig;
 
 /**
  * Class SortingControl
@@ -12,7 +12,7 @@ use Nayjest\Grids\FieldConfig;
  * The component for rendering sorting controls
  * added to column header automatically when field is sortable.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class SortingControl extends RenderableComponent
 {

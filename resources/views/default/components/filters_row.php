@@ -1,7 +1,7 @@
 <?php # ========== FILTERS ROW ==========
 /**
- * @var Nayjest\Grids\Components\FiltersRow $component
- * @var Nayjest\Grids\FieldConfig $column
+ * @var TheNandan\Grids\Components\FiltersRow $component
+ * @var TheNandan\Grids\FieldConfig $column
  */
 ?>
 <?php if($grid->getFiltering()->available()): ?>

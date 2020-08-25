@@ -1,10 +1,10 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 /**
  * @deprecated
  * Class EloquentDataRow
- * @package Nayjest\Grids
+ * @package TheNandan\Grids
  */
 class EloquentDataRow extends ObjectDataRow
 {

@@ -1,5 +1,5 @@
 <?php
-/** @var Nayjest\Grids\Components\Filters\DateRangePicker $component */
+/** @var TheNandan\Grids\Components\Filters\DateRangePicker $component */
 $id = uniqid();
 ?>
 <?php if($component->getLabel()): ?>
