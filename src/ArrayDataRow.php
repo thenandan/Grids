@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 class ArrayDataRow extends DataRow
 {

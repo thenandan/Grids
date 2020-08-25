@@ -1,14 +1,14 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\Components\Base\RenderableRegistry;
+use TheNandan\Grids\Components\Base\RenderableRegistry;
 
 /**
  * Class FiltersRow
  *
  * provides additional render sections for columns: 'filters_row_column_<name>'
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class FiltersRow extends RenderableRegistry
 {

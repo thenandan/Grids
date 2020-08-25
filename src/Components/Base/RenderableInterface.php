@@ -1,12 +1,12 @@
 <?php
-namespace Nayjest\Grids\Components\Base;
+namespace TheNandan\Grids\Components\Base;
 
 /**
  * Interface RenderableInterface
  *
  * Interface for objects that can be rendered.
  *
- * @package Nayjest\Grids\Components\Base
+ * @package TheNandan\Grids\Components\Base
  */
 interface RenderableInterface
 {

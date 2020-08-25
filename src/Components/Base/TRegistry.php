@@ -1,8 +1,8 @@
 <?php
-namespace Nayjest\Grids\Components\Base;
+namespace TheNandan\Grids\Components\Base;
 
 use Illuminate\Support\Collection;
-use Nayjest\Grids\Grid;
+use TheNandan\Grids\Grid;
 
 trait TRegistry
 {

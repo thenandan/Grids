@@ -1,16 +1,16 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
 use LogicException;
-use Nayjest\Grids\Components\Base\RenderableComponentInterface;
-use Nayjest\Grids\Components\Base\TComponent;
-use Nayjest\Grids\Components\Base\TComponentView;
-use Nayjest\Grids\ArrayDataRow;
-use Nayjest\Grids\DataProvider;
-use Nayjest\Grids\DataRow;
-use Nayjest\Grids\FieldConfig;
-use Nayjest\Grids\IdFieldConfig;
-use Nayjest\Grids\Grid;
+use TheNandan\Grids\Components\Base\RenderableComponentInterface;
+use TheNandan\Grids\Components\Base\TComponent;
+use TheNandan\Grids\Components\Base\TComponentView;
+use TheNandan\Grids\ArrayDataRow;
+use TheNandan\Grids\DataProvider;
+use TheNandan\Grids\DataRow;
+use TheNandan\Grids\FieldConfig;
+use TheNandan\Grids\IdFieldConfig;
+use TheNandan\Grids\Grid;
 use Illuminate\Support\Facades\Event;
 
 /**
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Event;
  *
  * The component renders row with totals for current page.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class TotalsRow extends ArrayDataRow implements RenderableComponentInterface
 {

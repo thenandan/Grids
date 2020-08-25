@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids\Components\Base;
+namespace TheNandan\Grids\Components\Base;
 
 
 trait TTaggable

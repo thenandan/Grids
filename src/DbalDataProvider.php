@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 use DB;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -169,19 +169,19 @@ class DbalDataProvider extends DataProvider
                 $operator = '=';
                 break;
             case "n_eq":
-                $operator = '<>';    
+                $operator = '<>';
                 break;
             case "gt":
-                $operator = '>';    
+                $operator = '>';
                  break;
             case "lt":
-                $operator = '<';    
+                $operator = '<';
                 break;
             case "ls_e":
-                $operator = '<=';    
+                $operator = '<=';
                 break;
             case "gt_e":
-                $operator = '>=';    
+                $operator = '>=';
                 break;
             case "in":
                 // may be broken, @see https://github.com/Nayjest/Grids/issues/109

@@ -1,14 +1,14 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\Grid;
+use TheNandan\Grids\Grid;
 
 /**
  * Class ColumnHeadersRow
  *
  * The component for rendering table row with column headers.
  *
- * @package Nayjest\Grids\Components
+ * @package TheNandan\Grids\Components
  */
 class ColumnHeadersRow extends HtmlTag
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
 use Illuminate\Support\Facades\App;
 use Input;
@@ -11,7 +11,7 @@ use Form;
  *
  * This class manages input processing for grid.
  *
- * @package Nayjest\Grids
+ * @package TheNandan\Grids
  */
 class GridInputProcessor
 {
