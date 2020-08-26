@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Gate;
  *
  * @package TheNandan\Grids
  */
-class LaravelGrid
+class TheNandanGrid
 {
     public const OPERATOR_LIKE = 'like';
     public const OPERATOR_EQ = '=';

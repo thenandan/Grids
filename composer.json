@@ -1,6 +1,6 @@
 {
-    "name": "thenandan/laravel-grid",
-    "description": "Grids for Laravel 5 + frameworks",
+    "name": "thenandan/grids",
+    "description": "Grids for Laravel 5+ frameworks",
     "keywords": [
         "grid",
         "tables",
@@ -25,7 +25,7 @@
         "optimize-autoloader": true,
         "classmap-authoritative": true
     },
-    "homepage": "https://github.com/thenandan/laravel-grid",
+    "homepage": "https://github.com/thenandan/grids",
     "type": "laravel-library",
     "license": "proprietary",
     "authors": [
@@ -54,7 +54,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TheNandan\\Grids\\LaravelGridServiceProvider"
+                "ThaNandan\\Grids\\GridsServiceProvider"
             ]
         }
     }

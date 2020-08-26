@@ -4,12 +4,12 @@ namespace TheNandan\Grids\Helpers;
 
 use TheNandan\Grids\FilterConfig;
 use TheNandan\Grids\EloquentDataProvider;
-use TheNandan\Grids\LaravelGrid;
+use TheNandan\Grids\TheNandanGrid;
 
 class SearchFilter
 {
     protected $filter;
-    protected $operator = LaravelGrid::OPERATOR_LIKE;
+    protected $operator = TheNandanGrid::OPERATOR_LIKE;
     protected $isRelated = false;
 
     public function __construct($name, $operator = false)
@@ -36,7 +36,7 @@ class SearchFilter
         $this->setFilteringFunc(function ($val, EloquentDataProvider $dp) use ($relation, $name) {
             $builder = $dp->getBuilder();
             $builder->whereHas($relation, function ($query) use ($val, $name) {
-                $query->where($name, $this->operator, $this->operator == LaravelGrid::OPERATOR_LIKE ? '%'.$val.'%' : $val);
+                $query->where($name, $this->operator, $this->operator == TheNandanGrid::OPERATOR_LIKE ? '%'.$val.'%' : $val);
             });
         });
     }

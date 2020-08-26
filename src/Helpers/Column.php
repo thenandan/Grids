@@ -4,7 +4,7 @@ namespace TheNandan\Grids\Helpers;
 
 use DateTime;
 use DateTimeZone;
-use TheNandan\Grids\LaravelGrid;
+use TheNandan\Grids\TheNandanGrid;
 use TheNandan\Grids\FieldConfig;
 use TheNandan\Grids\EloquentDataProvider;
 
@@ -101,7 +101,7 @@ class Column
         return $this;
     }
 
-    public function setSearchFilter($operator = LaravelGrid::OPERATOR_LIKE)
+    public function setSearchFilter($operator = TheNandanGrid::OPERATOR_LIKE)
     {
         $this->filter = new SearchFilter($this->getName(), $operator);
         if ($this->relation) {
