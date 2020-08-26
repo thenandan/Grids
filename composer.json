@@ -48,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ThaNandan\\Grids\\GridsServiceProvider"
+                "TheNandan\\Grids\\GridsServiceProvider"
             ]
         }
     }
