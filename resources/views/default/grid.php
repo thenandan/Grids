@@ -1,9 +1,10 @@
 <form>
 <?php
-/** @var Nayjest\Grids\DataProvider $data **/
-/** @var Nayjest\Grids\Grid $grid **/
+/** @var TheNandan\Grids\DataProvider $data **/
+/** @var TheNandan\Grids\Grid $grid **/
 ?>
-<table class="table table-striped" id="<?= $grid->getConfig()->getName() ?>">
+<table class="table table-hover" id="<?= $grid->getConfig()->getName() ?>">
+
 <?= $grid->header() ? $grid->header()->render() : '' ?>
 <?php # ========== TABLE BODY ========== ?>
 <tbody>

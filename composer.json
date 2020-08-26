@@ -1,6 +1,6 @@
 {
-    "name": "thenandan/laravel-grid",
-    "description": "Grids for Laravel 5 + frameworks",
+    "name": "thenandan/grids",
+    "description": "Grids for Laravel 5+ frameworks",
     "keywords": [
         "grid",
         "tables",
@@ -12,7 +12,20 @@
         "laravel-5",
         "laravel5"
     ],
-    "homepage": "https://github.com/thenandan/laravel-grid",
+    "config": {
+        "secure-http": false,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "github-protocols": [
+            "git",
+            "https"
+        ],
+        "discard-changes": true,
+        "optimize-autoloader": true,
+        "classmap-authoritative": true
+    },
+    "homepage": "https://github.com/thenandan/grids",
     "type": "laravel-library",
     "license": "proprietary",
     "authors": [
@@ -24,6 +37,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
+        "laravelcollective/html": "v6.*",
         "illuminate/support": ">=4.2",
         "nayjest/builder": "~2"
     },
@@ -36,5 +50,12 @@
             "TheNandan\\Grids\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ThaNandan\\Grids\\GridsServiceProvider"
+            ]
+        }
+    }
 }

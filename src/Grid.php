@@ -1,11 +1,11 @@
 <?php
-namespace Nayjest\Grids;
+namespace TheNandan\Grids;
 
-use Event;
-use Cache;
-use Nayjest\Grids\Components\TFoot;
-use Nayjest\Grids\Components\THead;
-use View;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Cache;
+use TheNandan\Grids\Components\TFoot;
+use TheNandan\Grids\Components\THead;
+use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Application;
 
 class Grid
@@ -39,12 +39,7 @@ class Grid
         }
 
         $this->initializeComponents();
-
-        if (version_compare(Application::VERSION, '5.8', '>=')) {
-            Event::dispatch(self::EVENT_CREATE, $this);
-        } else {
-            Event::fire(self::EVENT_CREATE, $this);
-        }
+        Event::dispatch(self::EVENT_CREATE, $this);
     }
 
     /**
@@ -74,11 +69,7 @@ class Grid
         $this->prepareColumns();
         $this->getSorter()->apply();
 
-        if (version_compare(Application::VERSION, '5.8', '>=')) {
-            Event::dispatch(self::EVENT_PREPARE, $this);
-        } else {
-            Event::fire(self::EVENT_PREPARE, $this);
-        }
+        Event::dispatch(self::EVENT_PREPARE, $this);
 
         $this->prepared = true;
     }
@@ -197,25 +188,26 @@ class Grid
         $caching_time = $this->config->getCachingTime();
         if ($caching_time && ($output = Cache::get($key))) {
             return $output;
-        } else {
-            $this->prepare();
-            $provider = $this->config->getDataProvider();
-            $provider->reset();
-            $output = View::make(
-                $this->getMainTemplate(),
-                $this->getViewData()
-            )->render();
-            if ($caching_time) {
-                Cache::put($key, $output, $caching_time);
-            }
-            return $output;
         }
+
+        $this->prepare();
+        $provider = $this->config->getDataProvider();
+
+        $provider->reset();
+        $output = View::make(
+            $this->getMainTemplate(),
+            $this->getViewData()
+        )->render();
+        if ($caching_time) {
+            Cache::put($key, $output, $caching_time);
+        }
+        return $output;
     }
 
     /**
      * Returns footer component.
      *
-     * @return TFoot|null
+     * @return mixed
      */
     public function footer()
     {
@@ -225,7 +217,7 @@ class Grid
     /**
      * Returns header component.
      *
-     * @return THead|null
+     * @return mixed
      */
     public function header()
     {

@@ -2,9 +2,9 @@
 /**
  * @author: Vitaliy Ofat <i@vitaliy-ofat.com>
  *
- * @var $grid Nayjest\Grids\Grid
+ * @var $grid TheNandan\Grids\Grid
  */
-use Nayjest\Grids\Components\ExcelExport;
+use TheNandan\Grids\Components\ExcelExport;
 ?>
 <span>
     <a

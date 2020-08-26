@@ -1,7 +1,7 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
-use Nayjest\Grids\Components\Base\RenderableRegistry;
+use TheNandan\Grids\Components\Base\RenderableRegistry;
 
 class HtmlTag extends RenderableRegistry
 {

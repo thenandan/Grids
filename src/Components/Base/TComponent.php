@@ -1,16 +1,16 @@
 <?php
-namespace Nayjest\Grids\Components\Base;
+namespace TheNandan\Grids\Components\Base;
 
-use Nayjest\Grids\Grid;
+use TheNandan\Grids\Grid;
 
 /**
  * Class TComponent
  *
  * ComponentInterface interface implementation.
  *
- * @see Nayjest\Grids\Components\Base\ComponentInterface
+ * @see TheNandan\Grids\Components\Base\ComponentInterface
  *
- * @package Nayjest\Grids\Components\Base
+ * @package TheNandan\Grids\Components\Base
  */
 trait TComponent
 {

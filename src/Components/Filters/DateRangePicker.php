@@ -1,9 +1,9 @@
 <?php
-namespace Nayjest\Grids\Components\Filters;
+namespace TheNandan\Grids\Components\Filters;
 
 use Carbon\Carbon;
-use Nayjest\Grids\Components\Filter;
-use Nayjest\Grids\DataProvider;
+use TheNandan\Grids\Components\Filter;
+use TheNandan\Grids\DataProvider;
 
 /**
  * Class DateRangePicker
@@ -14,7 +14,7 @@ use Nayjest\Grids\DataProvider;
  * This component does not includes javascript & styles required to work with bootstrap-daterangepicker.
  * You need to include it manually to your pages/layout.
  *
- * @package Nayjest\Grids\Components\Filters
+ * @package TheNandan\Grids\Components\Filters
  */
 class DateRangePicker extends Filter
 {
@@ -23,7 +23,7 @@ class DateRangePicker extends Filter
     protected $use_clear_button;
 
     protected $template = '*.components.filters.date_range_picker';
-    
+
     protected $is_submitted_on_change = false;
 
     /**
@@ -55,7 +55,7 @@ class DateRangePicker extends Filter
         $this->js_options = $options;
         return $this;
     }
-    
+
     /**
      * Returns true if form must be submitted immediately
      * when filter value selected.
@@ -66,7 +66,7 @@ class DateRangePicker extends Filter
     {
         return $this->is_submitted_on_change;
     }
-    
+
     /**
      * Allows to submit form immediately when filter value selected.
      *

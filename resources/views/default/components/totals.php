@@ -1,5 +1,5 @@
 <?php
-use Nayjest\Grids\Components\TotalsRow;
+use TheNandan\Grids\Components\TotalsRow;
 /** @var TotalsRow $component */
 ?>
 <tr>
@@ -12,13 +12,13 @@ use Nayjest\Grids\Components\TotalsRow;
             if ($component->uses($column)):
                 $label = '';
                 switch($component->getFieldOperation($column->getName())) {
-                    case \Nayjest\Grids\Components\TotalsRow::OPERATION_SUM:
+                    case \TheNandan\Grids\Components\TotalsRow::OPERATION_SUM:
                         $label = '∑';
                         break;
-                    case \Nayjest\Grids\Components\TotalsRow::OPERATION_COUNT:
+                    case \TheNandan\Grids\Components\TotalsRow::OPERATION_COUNT:
                         $label = 'Count';
                         break;
-                    case \Nayjest\Grids\Components\TotalsRow::OPERATION_AVG:
+                    case \TheNandan\Grids\Components\TotalsRow::OPERATION_AVG:
                         $label = 'Avg.';
                         break;
                 }

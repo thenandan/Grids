@@ -1,8 +1,8 @@
 <?php
-namespace Nayjest\Grids\Components;
+namespace TheNandan\Grids\Components;
 
 
-use Nayjest\Grids\Components\Base\RenderableComponent;
+use TheNandan\Grids\Components\Base\RenderableComponent;
 
 class Filter extends RenderableComponent
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nayjest\Grids\Build\Instructions;
+namespace TheNandan\Grids\Build\Instructions;
 
 use LogicException;
 use Nayjest\Builder\Instructions\Base\Instruction;
@@ -13,7 +13,7 @@ use Nayjest\Builder\Scaffold;
  * that defines how to setup grids data provider
  *
  * @internal
- * @package Nayjest\Grids\Build\Instructions
+ * @package TheNandan\Grids\Build\Instructions
  */
 class BuildDataProvider extends Instruction
 {
@@ -32,10 +32,10 @@ class BuildDataProvider extends Instruction
 
         if (is_object($src)) {
             if (is_a($src, '\Illuminate\Database\Eloquent\Builder')) {
-                $class = '\Nayjest\Grids\EloquentDataProvider';
+                $class = '\TheNandan\Grids\EloquentDataProvider';
                 $arg = $src;
             } elseif (is_a($src, '\Doctrine\DBAL\Query\QueryBuilder')) {
-                $class = '\Nayjest\Grids\DbalDataProvider';
+                $class = '\TheNandan\Grids\DbalDataProvider';
                 $arg = $src;
             }
 
@@ -45,7 +45,7 @@ class BuildDataProvider extends Instruction
                 class_exists($src, true) &&
                 is_subclass_of($src, '\Illuminate\Database\Eloquent\Model')
             ) {
-                $class = '\Nayjest\Grids\EloquentDataProvider';
+                $class = '\TheNandan\Grids\EloquentDataProvider';
                 $model = new $src;
                 $arg = $model->newQuery();
             }
