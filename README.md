@@ -37,7 +37,7 @@ Laravel 5+ supported.
 ## Installation
 
 ```composer 
-    composer require thenandan/laravel-grid
+    composer require thenandan/grids
 ```
 ## Demo
 
