@@ -148,10 +148,10 @@ class Column
         $columnName = $this->columnName;
         $this->setFilteringFunc(function ($val, $dp) use ($columnName) {
             $builder = $dp->getBuilder();
-            $from = new DateTime($val[0], new DateTimeZone(getTimeZone()));
+            $from = new DateTime($val[0], new DateTimeZone(date_default_timezone_get()));
             $from->setTimezone(new DateTimeZone('UTC'));
             $from = $from->format('Y-m-d H:m:s');
-            $to = new DateTime($val[1], new DateTimeZone(getTimeZone()));
+            $to = new DateTime($val[1], new DateTimeZone(date_default_timezone_get()));
             $to->setTimezone(new DateTimeZone('UTC'));
             $to = $to->format('Y-m-d H:m:s');
             $builder->where($columnName, '>=', $from)
@@ -190,7 +190,7 @@ class Column
     {
         $this->setCallback(function ($val) {
             $datetime = new DateTime($val);
-            $datetime->setTimezone(new DateTimeZone(getTimeZone()));
+            $datetime->setTimezone(new DateTimeZone(date_default_timezone_get()));
             return $datetime->format('d-M-Y h:i A');
         });
 

@@ -28,7 +28,8 @@ class SelectFilter extends SearchFilter
         });
     }
 
-    public function setOptions(array $options){
+    public function setOptions(array $options)
+    {
         $this->filter->setOptions($options);
     }
 }
