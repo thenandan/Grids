@@ -25,7 +25,7 @@ class GridConfig implements RegistryInterface
     /** @var  DataProvider $data_provider */
     protected $data_provider;
 
-    protected $page_size = 50;
+    protected $page_size = 20;
 
     /** @var Collection|FilterConfig[] $filters */
     protected $filters;
@@ -36,6 +36,16 @@ class GridConfig implements RegistryInterface
     protected $main_template = '*.grid';
 
     protected $row_component;
+
+    /**
+     * GridConfig constructor.
+     *
+     * @param $source
+     */
+    public function __construct($source)
+    {
+        $this->data_provider = new EloquentDataProvider($source);
+    }
 
     /**
      * @return RenderableComponentInterface
@@ -228,7 +238,7 @@ class GridConfig implements RegistryInterface
      * @param int $pageSize
      * @return $this
      */
-    public function setPageSize($pageSize)
+    public function setPageSize($pageSize = 20)
     {
         $this->page_size = (int)$pageSize;
         return $this;

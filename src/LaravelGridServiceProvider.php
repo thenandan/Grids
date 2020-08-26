@@ -5,9 +5,10 @@ namespace TheNandan\Grids;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
-use Illuminate\Support\ServiceProvider;
+use TheNandan\Grids\ServiceProvider as NayjestServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-class LaravelGridServiceProvider extends ServiceProvider
+class LaravelGridServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
@@ -19,7 +20,7 @@ class LaravelGridServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(ServiceProvider::class);
+        $this->app->register(NayjestServiceProvider::class);
         $this->app->register(HtmlServiceProvider::class);
         $this->app->alias(FormFacade::class, 'Form');
         $this->app->alias(HtmlFacade::class, 'HTML');

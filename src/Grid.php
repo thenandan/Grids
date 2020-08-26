@@ -188,19 +188,20 @@ class Grid
         $caching_time = $this->config->getCachingTime();
         if ($caching_time && ($output = Cache::get($key))) {
             return $output;
-        } else {
-            $this->prepare();
-            $provider = $this->config->getDataProvider();
-            $provider->reset();
-            $output = View::make(
-                $this->getMainTemplate(),
-                $this->getViewData()
-            )->render();
-            if ($caching_time) {
-                Cache::put($key, $output, $caching_time);
-            }
-            return $output;
         }
+
+        $this->prepare();
+        $provider = $this->config->getDataProvider();
+
+        $provider->reset();
+        $output = View::make(
+            $this->getMainTemplate(),
+            $this->getViewData()
+        )->render();
+        if ($caching_time) {
+            Cache::put($key, $output, $caching_time);
+        }
+        return $output;
     }
 
     /**
