@@ -93,14 +93,14 @@ class LaravelGrid
      * @param false $label
      * @param false $relation
      *
-     * @return $this
+     * @return Column
      */
     public function addColumn($column, $label = false, $relation = false)
     {
         $column = new Column($column, $label, $relation);
         $column->setGrid($this);
         $this->gridConfig->addColumn($column->getColumn());
-        return $this;
+        return $column;
     }
 
 
