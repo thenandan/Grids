@@ -60,10 +60,8 @@ trait TRegistry
             if ($component->getName() === $name) {
                 return $component;
             }
-            if ($component instanceof TRegistry || $component instanceof RegistryInterface) {
-                if ($res = $component->getComponentByNameRecursive($name)) {
-                    return $res;
-                }
+            if (($component instanceof RegistryInterface) && $res = $component->getComponentByNameRecursive($name)) {
+                return $res;
             }
 
         }
