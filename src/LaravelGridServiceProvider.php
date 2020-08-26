@@ -12,7 +12,13 @@ class LaravelGridServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
+        $this->loadViewsFrom(__DIR__.DIRECTORY_SEPARATOR.'Views', 'grid');
 
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.DIRECTORY_SEPARATOR.'Views' => resource_path('views/vendor/laravelgrid'),
+            ]);
+        }
     }
 
     /**
