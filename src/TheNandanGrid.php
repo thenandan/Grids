@@ -47,11 +47,9 @@ class TheNandanGrid
     private $exportPermission = null;
 
     /**
-     * LaravelGrid constructor.
-     *
      * @param $source
      */
-    public function __construct($source)
+    public function setGridConfig($source): void
     {
         $this->gridConfig = new GridConfig($source);
     }

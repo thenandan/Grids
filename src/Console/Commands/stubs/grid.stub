@@ -2,7 +2,28 @@
 
 namespace DummyNamespace;
 
-class GridClass
-{
+use Illuminate\Database\Eloquent\Model;
+use TheNandan\Grids\BaseGrid;
 
+class GridClass extends BaseGrid
+{
+    /**
+     * Set root model for the grid query
+     *
+     * @return Model
+     */
+    protected function setModel(): Model
+    {
+        // return new model instance
+    }
+
+    /**
+     * Configure your grid
+     *
+     * @return void
+     */
+    protected function configureGrid(): void
+    {
+        // Configure your grid column
+    }
 }
