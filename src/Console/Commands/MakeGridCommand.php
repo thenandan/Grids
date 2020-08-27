@@ -61,21 +61,21 @@ class MakeGridCommand extends GeneratorCommand
     {
         $stub = str_replace(
             ['DummyNamespace', 'GridClass'],
-            [$this->getNamespace($name), $this->getRepositoryClass()],
+            [$this->getNamespace($name), $this->getGridClass()],
             $stub
         );
         return $this;
     }
 
     /**
-     * Get the full namespace for a given class, without the class name.
+     * Get the default namespace for the class.
      *
-     * @param  string  $name
+     * @param  string  $rootNamespace
      * @return string
      */
-    protected function getNamespace($name)
+    protected function getDefaultNamespace($rootNamespace)
     {
-        return trim(implode('\\', array_slice(explode('\\', $name), 0, -1)), '\\').'\Grids';
+        return $rootNamespace.'\\Grids';
     }
 
     /**
@@ -83,21 +83,8 @@ class MakeGridCommand extends GeneratorCommand
      *
      * @return string
      */
-    protected function getRepositoryClass()
+    protected function getGridClass()
     {
         return Str::studly(class_basename($this->argument('name')));
-    }
-
-    /**
-     * Get the destination class path.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function getPath($name)
-    {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-
-        return $this->laravel['path'].'/Grids/'.str_replace('\\', '/', $name).'.php';
     }
 }
