@@ -3,6 +3,7 @@
 namespace TheNandan\Grids;
 
 
+use Illuminate\Support\Facades\View;
 use TheNandan\Grids\Grid as NayGrid;
 use TheNandan\Grids\Components\HtmlTag;
 use TheNandan\Grids\Components\CsvExport;
@@ -21,6 +22,7 @@ use TheNandan\Grids\Components\THead;
 use TheNandan\Grids\Helpers\Row;
 use TheNandan\Grids\Helpers\Column;
 use Illuminate\Support\Facades\Gate;
+use Collective\Html\HtmlFacade as HTML;
 
 /**
  * Class LaravelGrid
@@ -101,8 +103,31 @@ class TheNandanGrid
         return $column;
     }
 
+    /**
+     * @param $datePicker
+     * @param $name
+     */
+    public function setDateRangePicker($datePicker, $name)
+    {
+        $filtersRow = $this->gridConfig->getComponentByNameRecursive(FiltersRow::NAME);
+        $filtersRow->addComponent($datePicker);
+        if (!$this->hasDateRangePicker) {
+            $renderAssets = (new RenderFunc(function () {
+                return HTML::style(asset('grid/datepicker.css'))
+                    .HTML::script(asset('grid/moment.min.js'))
+                    .HTML::script(asset('grid/datepicker.min.js'));
+            }))
+                ->setRenderSection('filters_row_column_'.$name);
+            $filtersRow->addComponent($renderAssets);
+        }
+        $this->hasDateRangePicker = true;
+
+    }
 
 
+    /**
+     * @return View|string
+     */
     public function render()
     {
         $grid = new NayGrid($this->gridConfig);
