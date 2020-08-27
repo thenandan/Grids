@@ -4,10 +4,16 @@ namespace TheNandan\Grids\Helpers;
 
 use DateTime;
 use DateTimeZone;
+use TheNandan\Grids\FilterConfig;
+use TheNandan\Grids\SelectFilterConfig;
 use TheNandan\Grids\TheNandanGrid;
 use TheNandan\Grids\FieldConfig;
 use TheNandan\Grids\EloquentDataProvider;
 
+/**
+ * Class Column
+ * @package TheNandan\Grids\Helpers
+ */
 class Column
 {
     private $name;
@@ -17,6 +23,13 @@ class Column
     private $filter = null;
     private $grid;
 
+    /**
+     * Column constructor.
+     *
+     * @param $columnName
+     * @param false $label
+     * @param false $relation
+     */
     public function __construct($columnName, $label = false, $relation = false)
     {
         $this->relation = $relation;
@@ -32,115 +45,146 @@ class Column
         }
     }
 
-    public function getColumn()
+    /**
+     * @return FieldConfig
+     */
+    public function getColumn(): FieldConfig
     {
         return $this->column;
     }
 
-    public function setGrid($grid)
+    /**
+     * @param $grid
+     */
+    public function setGrid($grid): void
     {
         $this->grid = $grid;
     }
 
-    public function setName($name)
+    /**
+     * @param $name
+     *
+     * @return $this
+     */
+    public function setName($name): self
     {
         $this->name = $name;
         $this->column->setName($name);
-
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
 
-    public function setSortable()
+    /**
+     * @return $this
+     */
+    public function setSortable(): self
     {
         $this->column->setSortable(true);
-
         return $this;
     }
 
-    public function setFilter($filter)
+    /**
+     * @param $filter
+     *
+     * @return $this
+     */
+    public function setFilter($filter): self
     {
         $this->column->addFilter($filter);
-
         return $this;
     }
 
-    public function setCallback($function)
+    /**
+     * @param $function
+     * @return $this
+     */
+    public function setCallback($function): self
     {
         $this->column->setCallback($function);
 
         return $this;
     }
 
-    public function setLink($link, $name)
+    /**
+     * @param $link
+     * @param $name
+     *
+     * @return $this
+     */
+    public function setLink($link, $name): self
     {
         $this->setCallback(function ($val, $row) use ($link, $name) {
             $link = sprintf($link, $row->getSrc()->$name);
 
             return '<a href="'.$link.'" target="_blank">'.$val.'</a>';
         });
-
         return $this;
     }
 
-    public function setWidth($width)
-    {
-        $this->column->addStyleAttribute('width', $width);
-
-        return $this;
-    }
-
-    public function setTextAlignment($align)
-    {
-        $this->column->addStyleAttribute('text-align', $align);
-
-        return $this;
-    }
-
-    public function setSearchFilter($operator = TheNandanGrid::OPERATOR_LIKE)
+    /**
+     * @param string $operator
+     *
+     * @return $this
+     */
+    public function setSearchFilter($operator = TheNandanGrid::OPERATOR_LIKE): Column
     {
         $this->filter = new SearchFilter($this->getName(), $operator);
         if ($this->relation) {
             $this->filter->setDefaultFilteringFunc($this->columnName, $this->relation);
         }
         $this->setFilter($this->filter->getFilter());
-
         return $this;
     }
 
-    public function setSelectFilter($options = [], $name = false)
+    /**
+     * @param array $options
+     * @param false $name
+     *
+     * @return $this
+     */
+    public function setSelectFilter($options = [], $name = false): self
     {
-        $this->filter = new SelectFilter($this->getName(), $options);
         if (!$name) {
             $name = $this->columnName;
         }
-        $this->filter->setDefaultFilteringFunc($name, $this->relation);
-        $this->setFilter($this->filter->getFilter());
-
+        $this->column->addFilter(
+            (new SelectFilterConfig())->setName($name)
+            ->setOptions($options)
+        );
         return $this;
     }
 
-    public function setDateFilter()
+    /**
+     * @return $this
+     */
+    public function setDateFilter(): self
     {
         $this->setDateRangeFilter();
         $this->filter->addOption('singleDatePicker', true);
-
         return $this;
     }
 
-    public function setDateRangeFilter()
+    /**
+     * @return $this
+     */
+    public function setDateRangeFilter(): Column
     {
         $this->filter = new DateRangeFilter($this->getName());
         $this->grid->setDateRangePicker($this->filter->getFilter(), $this->getName());
-
         return $this;
     }
 
-    public function setDateTimeRangeFilter()
+    /**
+     * @return $this
+     */
+    public function setDateTimeRangeFilter(): Column
     {
         $this->setDateRangeFilter();
         $this->filter->addOption('timePicker', true);
@@ -157,67 +201,88 @@ class Column
             $builder->where($columnName, '>=', $from)
                 ->where($columnName, '<=', $to);
         });
-
         return $this;
     }
 
-    public function setFilteringFunc($function)
+    /**
+     * @param $function
+     *
+     * @return $this
+     */
+    public function setFilteringFunc($function): self
     {
         $this->filter->setFilteringFunc($function);
-
         return $this;
     }
 
-    public function time()
+    /**
+     * @return $this
+     */
+    public function time(): self
     {
         $this->setCallback(function ($val){
             return (new DateTime($val))->format('h:i A');
         });
-
         return $this;
     }
 
-    public function date()
+    /**
+     * @return $this
+     */
+    public function date(): self
     {
         $this->setCallback(function ($val){
             return (new DateTime($val))->format('d-M-Y');
         });
-
         return $this;
     }
 
-    public function datetime()
+    /**
+     * @return $this
+     */
+    public function datetime(): Column
     {
         $this->setCallback(function ($val) {
             $datetime = new DateTime($val);
             $datetime->setTimezone(new DateTimeZone(date_default_timezone_get()));
             return $datetime->format('d-M-Y h:i A');
         });
-
         return $this;
     }
 
-    public function status()
+    /**
+     * @return $this
+     */
+    public function status(): self
     {
         $this->boolean('Active', 'Inactive');
-
         return $this;
     }
 
-    public function boolean($trueValue = 'Yes', $falseVaue = 'No')
+    /**
+     * @param string $trueValue
+     * @param string $falseValue
+     *
+     * @return $this
+     */
+    public function boolean($trueValue = 'Yes', $falseValue = 'No'): self
     {
         if (!empty($this->filter)) {
-            $options = array_combine([1, 0], [$trueValue, $falseVaue]);
+            $options = array_combine([1, 0], [$trueValue, $falseValue]);
             $this->filter->setOptions($options);
         }
-        $this->setCallback(function ($val) use ($trueValue, $falseVaue) {
-            return $val == '1' ? $trueValue : $falseVaue;
+        $this->setCallback(function ($val) use ($trueValue, $falseValue) {
+            return $val == '1' ? $trueValue : $falseValue;
         });
-
         return $this;
     }
 
-    public function hasCheck($manyRelation = false)
+    /**
+     * @param false $manyRelation
+     *
+     * @return $this
+     */
+    public function hasCheck($manyRelation = false): self
     {
         if (!empty($this->filter)) {
             $this->filter->setOptions([1 => 'Yes', 0 => 'No']);
@@ -277,31 +342,12 @@ class Column
         return $this;
     }
 
-    public function hide()
+    /**
+     * @return $this
+     */
+    public function hide(): Column
     {
         $this->grid->addHiddenColumn($this->getName());
-
-        return $this;
-    }
-
-    public function integer()
-    {
-        $this->setFormat('integer');
-
-        return $this;
-    }
-
-    public function float()
-    {
-        $this->setFormat('float');
-
-        return $this;
-    }
-
-    public function setFormat($format)
-    {
-        $this->column->setFormat($format);
-
         return $this;
     }
 }

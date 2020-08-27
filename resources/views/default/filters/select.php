@@ -8,7 +8,7 @@ if (method_exists($cfg, 'isSubmittedOnChange') && $cfg->isSubmittedOnChange()) {
 }
 ?>
 <select
-    class="form-control input-sm"
+    class="form-control form-control-sm"
     name="<?= $filter->getInputName() ?><?= $cfg->isMultipleMode() ? '[]' : '' ?>"
     <?= $onchange ?>
     <?= ($size = $cfg->getSize()) ? 'size="'.$size.'"' : '' ?>
