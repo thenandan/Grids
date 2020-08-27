@@ -3,7 +3,7 @@
 ?>
 
 <input
-    class="form-control input-sm"
+    class="form-control form-control-sm"
     name="<?= $filter->getInputName() ?>"
     value="<?= $filter->getValue() ?>"
     />
