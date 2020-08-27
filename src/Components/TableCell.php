@@ -39,18 +39,24 @@ class TableCell extends HtmlTag
             $this->attributes['style'] = 'display:none;';
         }
 
-        if ($this->column->isHtml()) {
-            $this->attributes['data-html'] = true;
-        }
+        $this->attributes['data-html'] = 'true';
 
         if ($this->column->hasPopover()) {
             $this->attributes['data-toggle'] = 'popover';
             $this->attributes['title'] = $this->column->getPopoverTitle();
-            $this->attributes['data-content'] = $this->column->getCellValue();
+            if (!$this->column->isHtml()) {
+                $this->attributes['data-content'] = '<code><pre>'.$this->column->getCellValue().'</pre></code>';
+            } else {
+                $this->attributes['data-content'] = $this->column->getCellValue();
+            }
         } elseif ($this->column->hasToolTip()) {
             $this->attributes['data-toggle'] = 'tooltip';
             $this->attributes['role'] = 'tooltip';
-            $this->attributes['title'] = $this->column->getCellValue();
+            if (!$this->column->isHtml()) {
+                $this->attributes['title'] = '<pre>'.$this->column->getCellValue().'</pre>';
+            } else {
+                $this->attributes['title'] = $this->column->getCellValue();
+            }
         } elseif ($this->column->hasTitle()) {
             $this->attributes['title'] = $this->column->getCellValue();
         }

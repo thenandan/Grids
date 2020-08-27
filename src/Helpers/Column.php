@@ -393,7 +393,7 @@ class Column
      * @param false $isHtml
      * @return $this
      */
-    public function setPopover($title = null, $isHtml = false): self
+    public function setPopover($isHtml = false, $title = null): self
     {
         if (null === $title) {
             $title = $this->column->getLabel();
