@@ -4,7 +4,6 @@ namespace TheNandan\Grids\Helpers;
 
 use DateTime;
 use DateTimeZone;
-use TheNandan\Grids\FilterConfig;
 use TheNandan\Grids\SelectFilterConfig;
 use TheNandan\Grids\TheNandanGrid;
 use TheNandan\Grids\FieldConfig;
@@ -18,6 +17,7 @@ class Column
 {
     private $name;
     private $column;
+    private $originalValue;
     private $relation;
     private $columnName;
     private $filter = null;
@@ -113,6 +113,22 @@ class Column
     }
 
     /**
+     * @param int $noOfChar
+     * @return $this
+     */
+    public function shorten(int $noOfChar = 20): self
+    {
+        $this->column->setCallback(function ($val) use ($noOfChar) {
+            $this->column->setValue($val);
+            if (empty($val)) {
+                return '-';
+            }
+            return substr($val,0,$noOfChar).'...';
+        });
+        return $this;
+    }
+
+    /**
      * @param $link
      * @param $name
      *
@@ -146,10 +162,11 @@ class Column
     /**
      * @param array $options
      * @param false $name
+     * @param false $multiple
      *
      * @return $this
      */
-    public function setSelectFilter($options = [], $name = false): self
+    public function setSelectFilter($options = [], $name = false, bool $multiple = false): self
     {
         if (!$name) {
             $name = $this->columnName;
@@ -157,6 +174,7 @@ class Column
         $this->column->addFilter(
             (new SelectFilterConfig())->setName($name)
             ->setOptions($options)
+            ->setMultipleMode($multiple)
         );
         return $this;
     }
@@ -348,6 +366,39 @@ class Column
     public function hide(): Column
     {
         $this->grid->addHiddenColumn($this->getName());
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setTitle(): self
+    {
+        $this->column->setTitle();
+        return $this;
+    }
+
+    /**
+     * @param false $isHtml
+     * @return $this
+     */
+    public function setToolTip($isHtml = false): self
+    {
+        $this->column->setTooltip($isHtml);
+        return $this;
+    }
+
+    /**
+     * @param null $title
+     * @param false $isHtml
+     * @return $this
+     */
+    public function setPopover($title = null, $isHtml = false): self
+    {
+        if (null === $title) {
+            $title = $this->column->getLabel();
+        }
+        $this->column->setPopover($title, $isHtml);
         return $this;
     }
 }

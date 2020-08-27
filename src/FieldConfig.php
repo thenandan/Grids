@@ -27,6 +27,18 @@ class FieldConfig
     protected $label;
 
     /**
+     * Title attribute of the cell
+     *
+     * @var $title
+     */
+    protected $value;
+    protected $isToolTip = false;
+    protected $isPopover = false;
+    protected $isTitle = false;
+    protected $isHtml = false;
+    protected $popoverTitle;
+
+    /**
      * @var int
      */
     protected $order = 0;
@@ -320,6 +332,86 @@ class FieldConfig
     }
 
     /**
+     * @param $value
+     */
+    public function setValue($value): void
+    {
+        $this->value = $value;
+    }
+
+    /**
+     * @return void
+     */
+    public function setTitle(): void
+    {
+        $this->isTitle = true;
+    }
+
+    /**
+     * @param false $isHtml
+     */
+    public function setTooltip($isHtml = false): void
+    {
+        $this->isTitle = true;
+        $this->isPopover = false;
+        $this->isToolTip = true;
+        $this->isHtml = $isHtml;
+    }
+
+    /**
+     * @param $title
+     * @param false $isHtml
+     */
+    public function setPopover($title, $isHtml = false): void
+    {
+        $this->isTitle = false;
+        $this->isPopover = true;
+        $this->popoverTitle = $title;
+        $this->isToolTip = false;
+        $this->isHtml = $isHtml;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPopoverTitle()
+    {
+        return $this->popoverTitle;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasTitle(): bool
+    {
+        return $this->isTitle;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasToolTip(): bool
+    {
+        return $this->isToolTip;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPopover(): bool
+    {
+        return $this->isPopover;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHtml(): bool
+    {
+        return $this->isHtml;
+    }
+
+    /**
      * @todo move to Field instance
      * @param DataRowInterface $row
      * @return mixed
@@ -327,9 +419,17 @@ class FieldConfig
     public function getValue(DataRowInterface $row)
     {
         if ($function = $this->getCallback()) {
-            return call_user_func($function, $row->getCellValue($this), $row);
-        } else {
-            return $row->getCellValue($this);
+            return $function($row->getCellValue($this), $row);
         }
+
+        return $row->getCellValue($this);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCellValue()
+    {
+        return $this->value;
     }
 }
