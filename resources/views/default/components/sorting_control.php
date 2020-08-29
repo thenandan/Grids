@@ -5,7 +5,7 @@
 
             class="text-success"
         <?php else: ?>
-            href="<?= $grid->getSorter()->link($column, 'ASC') ?>"
+            href="<?php echo $grid->getSorter()->link($column, 'ASC') ?>"
         <?php endif ?>
         >
         &#x25B2;
@@ -15,7 +15,7 @@
         <?php if($column->isSortedDesc()): ?>
             class="text-success"
         <?php else: ?>
-            href="<?= $grid->getSorter()->link($column, 'DESC') ?>"
+            href="<?php echo $grid->getSorter()->link($column, 'DESC') ?>"
         <?php endif ?>
         >
         &#x25BC;

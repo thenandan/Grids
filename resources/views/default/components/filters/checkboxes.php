@@ -1,17 +1,17 @@
 <?php
-/** @var TheNandan\Grids\Components\SelectFilter $component */
+/** @let TheNandan\Grids\Components\SelectFilter $component */
 $value = $component->getValue();
 if (!is_array($value)) $value = [];
-$id = uniqid() . mt_rand();
+$id = uniqid('', true) . mt_rand();
 ?>
 <div class="btn-group">
     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-        <?= $component->getLabel() ?>
+        <?php echo $component->getLabel() ?>
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu dropdown-menu-form"
         role="menu"
-        id="<?=$id ?>"
+        id="<?php echo$id ?>"
         style="padding: 10px"
     >
         <li>
@@ -25,7 +25,7 @@ $id = uniqid() . mt_rand();
                 </label>
             </div>
         </li>
-        <?php foreach($component->getVariants() as $val => $label): ?>
+        <?php foreach($component->getletiants() as $val => $label): ?>
             <?php if(is_array($label)):?>
                 <?php
                 $class = '';
@@ -34,12 +34,12 @@ $id = uniqid() . mt_rand();
                 }
                 ?>
                 <li>
-                    <a href="#" data-target="#collapse<?=$val?>" class="collapsible">
+                    <a href="#" data-target="#collapse<?php echo$val?>" class="collapsible">
                         <span class="glyphicon glyphicon-collapse-down"></span>
-                        <b><?= $label['name'] ?></b>
+                        <b><?php echo $label['name'] ?></b>
                     </a>
 
-                    <div class="collapse<?=$class?>" id="collapse<?=$val?>" style="margin-left: 25px;">
+                    <div class="collapse<?php echo$class?>" id="collapse<?php echo$val?>" style="margin-left: 25px;">
                         <?php if (count($label['values']) > 1):?>
                             <div>
                                 <label>
@@ -57,9 +57,9 @@ $id = uniqid() . mt_rand();
                                     <input
                                         type="checkbox"
                                         <?php if(!empty($value[$option_val])) echo "checked='checked'" ?>
-                                        name="<?= $component->getInputName() ?>[<?= $option_val ?>]"
+                                        name="<?php echo $component->getInputName() ?>[<?php echo $option_val ?>]"
                                     >
-                                    <span><?= $option_label ?></span>
+                                    <span><?php echo $option_label ?></span>
                                 </label>
                             </div>
                         <?php endforeach ?>
@@ -71,9 +71,9 @@ $id = uniqid() . mt_rand();
                         <input
                             type="checkbox"
                             <?php if(!empty($value[$val])) echo "checked='checked'" ?>
-                            name="<?= $component->getInputName() ?>[<?= $val ?>]"
+                            name="<?php echo $component->getInputName() ?>[<?php echo $val ?>]"
                         >
-                        <span><?= $label ?></span>
+                        <span><?php echo $label ?></span>
                     </label>
                 </li>
             <?php endif ?>
@@ -82,15 +82,15 @@ $id = uniqid() . mt_rand();
 </div>
 <script>
     $(function(){
-        $('#<?= $id ?>.dropdown-menu').on('click', function(e) {
+        $('#<?php echo $id ?>.dropdown-menu').on('click', function(e) {
             if($(this).hasClass('dropdown-menu-form')) {
                 e.stopPropagation();
             }
         });
-        $('#<?= $id ?> input').change(function(){
-            var $this = $(this);
+        $('#<?php echo $id ?> input').change(function(){
+            let $this = $(this);
             setTimeout(function(){
-                var isCheckedGroup = true;
+                let isCheckedGroup = true;
                 $this.closest('li').find('input[type=checkbox]').not('.checkGroup').each(function(){
                     isCheckedGroup = isCheckedGroup && $(this).prop('checked');
                 });
@@ -98,27 +98,27 @@ $id = uniqid() . mt_rand();
             }, 50);
             setTimeout(isCheckedAll,50);
         });
-        $('#<?= $id ?> .collapsible').click(function(e){
+        $('#<?php echo $id ?> .collapsible').click(function(e){
             $(this).next('.collapse').toggleClass('in');
             $(this).find('i').toggleClass('glyphicon-collapse-down').toggleClass('glyphicon-collapse-up');
             e.preventDefault();
         });
-        $('#<?= $id ?> .checkAll').change(function(e){
-            var checked = $(this).prop('checked');
+        $('#<?php echo $id ?> .checkAll').change(function(e){
+            let checked = $(this).prop('checked');
             $(this).closest('ul').find('input[type=checkbox]').prop('checked', checked);
         });
-        $('#<?= $id ?> .checkGroup').change(function(e){
-            var checked = $(this).prop('checked');
+        $('#<?php echo $id ?> .checkGroup').change(function(e){
+            let checked = $(this).prop('checked');
             $(this).closest('li').find('input[type=checkbox]').prop('checked', checked);
             setTimeout(isCheckedAll,50);
         });
 
-        var isCheckedAll = function() {
-            var isChecked = true;
-            $('#<?= $id ?> input[type=checkbox]').not('.checkAll').each(function(){
+        let isCheckedAll = function() {
+            let isChecked = true;
+            $('#<?php echo $id ?> input[type=checkbox]').not('.checkAll').each(function(){
                 isChecked = isChecked && $(this).prop('checked');
             });
-            $('#<?= $id ?> .checkAll').prop('checked', isChecked);
+            $('#<?php echo $id ?> .checkAll').prop('checked', isChecked);
         };
     });
 

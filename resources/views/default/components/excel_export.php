@@ -7,14 +7,14 @@
 use TheNandan\Grids\Components\ExcelExport;
 ?>
 <span>
-    <a
-        href="<?= $grid
+    <a data-toggle="tooltip" data-placement="bottom" title="Excel Export"
+        href="<?php echo $grid
             ->getInputProcessor()
             ->getUrl([ExcelExport::INPUT_PARAM => 1])
         ?>"
         class="btn btn-sm btn-default"
         >
-        <span class="glyphicon glyphicon-export"></span>
-        Excel Export
+        <i class="fas fa-file-excel"></i>
+        Export
     </a>
 </span>

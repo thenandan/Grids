@@ -248,7 +248,7 @@ class TheNandanGrid
         $head[] = $resetFiltersButtonTag;
         $head[] = $exportCsvTag;
         $head[] = $exportExcelTag;
-//        $head[] = $columnsHiderTag;
+        $head[] = $columnsHiderTag;
         $tfoot[] = $showingRecordsTag;
         $tfoot[] = $paginationTag;
         $headOneCellRow = $this->getOneCellRow($head);

@@ -7,14 +7,14 @@
 use TheNandan\Grids\Components\CsvExport;
 ?>
 <span>
-    <a
-        href="<?= $grid
+    <a data-toggle="tooltip" data-placement="bottom" title="Csv Export"
+        href="<?php echo $grid
             ->getInputProcessor()
             ->getUrl([CsvExport::INPUT_PARAM => 1])
         ?>"
         class="btn btn-sm btn-default"
         >
-        <span class="glyphicon glyphicon-export"></span>
-        CSV Export
+        <i class="fas fa-file-csv"></i>
+        Export
     </a>
 </span>

@@ -4,9 +4,9 @@
 
 <input
     class="form-control form-control-sm"
-    name="<?= $filter->getInputName() ?>"
-    value="<?= $filter->getValue() ?>"
+    name="<?php echo $filter->getInputName() ?>"
+    value="<?php echo $filter->getValue() ?>"
     />
 <?php if($label): ?>
-    <span><?= $label ?></span>
+    <span><?php echo $label ?></span>
 <?php endif ?>
