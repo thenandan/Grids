@@ -133,14 +133,27 @@ Make you to add the below in your main layout -
 ```blade
 @yield('grid_js')
 ```
+Now create you route and return the company view. You will see a grid something similar to following.
+![screenshot](https://opnsrc.s3.ap-south-1.amazonaws.com/grid.png)
+ 
+ 
+## Available Grid Methods
+* setGridName($name) - Set the name of the grid
+* setDefaultPageSize($number) - Set the default page size.
+* setCachingTime($timeInMinute) - Set the caching time in minute.
+* addColumn($column, $label = false, $relation = false) - Add a new column in grid.
+* setRecordsPerPage(array $recordsPerPage) - Set report perPage dropdown list.
 
-## Demo
-
-Please refer [Nayjest/Grids](https://github.com/Nayjest/Grids) Demo
-
-## Screenshot
-![screenshot](https://www.dropbox.com/s/oq6i54254dfw8vt/Screenshot%202020-08-30%20at%2011.06.12%20PM.png)
-
+## Available nested column methods
+* setSortable() - When used column becomes sortable
+* setCallback($function) - Can be used to customize the value of the cell - Returned value will be the value of cell
+* shorten(int $noOfChar = 20) - Can be used to limit the no. of character in the value,  When used below methods become available
+    * setTitle() - Set the cell original value in html title attribute
+    * setToolTip($isHtml = false) - Set the cell original value in tooltip
+    * setPopover($isHtml = false, $title = null) - Set the cell original value in a popover, Here $title variable is can be used to set the title of popover
+* setLink($link, $name) - Can be used to set a link
+* setSearchFilter($operator = TheNandanGrid::OPERATOR_LIKE) - Can be used to make the column searchable
+* More filter is coming soon - 
 
 
 ## License
