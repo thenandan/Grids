@@ -37,6 +37,8 @@ class GridConfig implements RegistryInterface
 
     protected $row_component;
 
+    protected $tHeadClass = 'thead-light';
+
     /**
      * GridConfig constructor.
      *

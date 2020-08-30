@@ -11,7 +11,7 @@ class SelectFilter extends SearchFilter
     {
         $this->filter = (new SelectFilterConfig())->setOptions($options);
         $this->filter->setName($name);
-        parent::__construct($name, $options);
+        parent::__construct($name, $this->filter->getOperator());
     }
 
     public function setDefaultFilteringFunc($name, $relation = false)
@@ -26,10 +26,5 @@ class SelectFilter extends SearchFilter
                 $builder->where($name, $val);
             }
         });
-    }
-
-    public function setOptions(array $options)
-    {
-        $this->filter->setOptions($options);
     }
 }

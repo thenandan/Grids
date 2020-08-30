@@ -9,16 +9,16 @@
             <?php foreach($columns as $column): ?>
                 <td
                     class="column-<?= $column->getName() ?>"
-                    <?= $column->isHidden()?'style="display:none"':'' ?>
+                    <?php echo $column->isHidden()?'style="display:none"':'' ?>
                     >
                     <?php if ($column->hasFilters()): ?>
                         <?php foreach($column->getFilters() as $filter): ?>
-                            <?= $grid->getFiltering()->render($filter) ?>
+                            <?php echo $grid->getFiltering()->render($filter) ?>
                         <?php endforeach ?>
                     <?php endif ?>
-                    <?= $component->renderComponents('filters_row_column_' . $column->getName()) ?>
+                    <?php echo $component->renderComponents('filters_row_column_' . $column->getName()) ?>
                 </td>
             <?php endforeach ?>
-            <?= $grid->getInputProcessor()->getSortingHiddenInputsHtml() ?>
+            <?php echo $grid->getInputProcessor()->getSortingHiddenInputsHtml() ?>
     </tr>
 <?php endif ?>

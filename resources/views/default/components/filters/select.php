@@ -10,7 +10,7 @@
     $component->getVariants(),
     $component->getValue(),
     [
-        'class' => "form-control input-sm",
+        'class' => "form-control form-control-sm",
         'style' => 'display: inline; width: 160px; margin-right: 10px'
     ]
 );

@@ -6,7 +6,7 @@ use TheNandan\Grids\Components\TotalsRow;
     <?php foreach($columns as $column): ?>
         <td
             class="column-<?= $column->getName() ?>"
-            <?= $column->isHidden()?'style="display:none"':'' ?>
+            <?php echo $column->isHidden()?'style="display:none"':'' ?>
             >
             <?php
             if ($component->uses($column)):

@@ -1,55 +1,55 @@
 <?php
-/** @var TheNandan\Grids\Components\Filters\DateRangePicker $component */
-$id = uniqid();
+/** @let TheNandan\Grids\Components\Filters\DateRangePicker $component */
+$id = uniqid('', true);
 ?>
 <?php if($component->getLabel()): ?>
     <span>
-        <span class="glyphicon glyphicon-calendar"></span>
-        <?= $component->getLabel() ?>
+        <i class="fas fa-calendar-alt"></i>
+        <?php echo $component->getLabel() ?>
     </span>
 <?php endif ?>
 <input
-    class="form-control input-sm"
+    class="form-control form-control-sm"
     style="display: inline; width: 165px; margin-right: 10px"
-    name="<?= $component->getInputName() ?>"
+    name="<?php echo $component->getInputName() ?>"
     type="text"
-    id="<?= $id ?>"
+    id="<?php echo $id ?>"
     >
 
 <script>
     $(function(){
-        var options = <?= json_encode($component->getJsOptions())?>;
+        let options = <?php echo json_encode($component->getJsOptions())?>;
         if (!options.format) {
             options.format = 'YYYY-MM-DD';
         }
-        var cb = function(start, end) {
-            var text;
+        let cb = function(start, end) {
+            let text;
             if (start.isValid() && end.isValid()) {
                 text = start.format(options.format) + '—' + end.format(options.format);
             } else {
                 text = '';
             }
-            $('#<?=$id?>').val(text);
+            $('#<?php echo$id?>').val(text);
         };
-        var onApplyDate = function(ev, picker) {
-            var start = $('[name="<?= $component->getStartInputName() ?>"]');
+        let onApplyDate = function(ev, picker) {
+            let start = $('[name="<?php echo $component->getStartInputName() ?>"]');
             start.val(picker.startDate.format(options.format));
-            var end = $('[name="<?= $component->getEndInputName() ?>"]');
+            let end = $('[name="<?php echo $component->getEndInputName() ?>"]');
             end.val(picker.endDate.format(options.format));
             <?php if($component->isSubmittedOnChange()): ?>
             	end.get(0).form.submit();
             <?php endif ?>
         };
-        $('#<?= $id ?>')
+        $('#<?php echo $id ?>')
             .daterangepicker(options, cb)
             .on('apply.daterangepicker', onApplyDate)
             .on('change', function () {
-              if (!$('#<?=$id?>').val()) {
-                $('[name="<?= $component->getStartInputName() ?>"]').val('');
-                $('[name="<?= $component->getEndInputName() ?>"]').val('');
+              if (!$('#<?php echo$id?>').val()) {
+                $('[name="<?php echo $component->getStartInputName() ?>"]').val('');
+                $('[name="<?php echo $component->getEndInputName() ?>"]').val('');
 
                 <?php if($component->isSubmittedOnChange()): ?>
-                var end = $('[name="<?= $component->getEndInputName() ?>"]');
+                let end = $('[name="<?php echo $component->getEndInputName() ?>"]');
                 end.get(0).form.submit();
                 <?php endif ?>
               }
@@ -59,11 +59,11 @@ $id = uniqid();
               $(this).trigger("change");
             });
         cb(
-            moment("<?= $component->getStartValue() ?>"),
-            moment("<?= $component->getEndValue() ?>")
+            moment("<?php echo $component->getStartValue() ?>"),
+            moment("<?php echo $component->getEndValue() ?>")
         );
     })
 </script>
-<?= Form::hidden($component->getStartInputName(), $component->getStartValue()) ?>
-<?= Form::hidden($component->getEndInputName(), $component->getEndValue()) ?>
+<?php echo Form::hidden($component->getStartInputName(), $component->getStartValue()) ?>
+<?php echo Form::hidden($component->getEndInputName(), $component->getEndValue()) ?>
 

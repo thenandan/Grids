@@ -1,17 +1,19 @@
 {
     "name": "thenandan/grids",
-    "description": "Grids for Laravel 5+ frameworks",
-    "keywords": [
-        "grid",
-        "tables",
-        "html",
-        "laravel",
-        "database",
-        "eloquent",
-        "bootstrap",
-        "laravel-5",
-        "laravel5"
+    "authors": [
+        {
+            "name": "Keshari Nandan",
+            "email": "thenandan4@gmail.com",
+            "role": "Developer"
+        }
     ],
+    "description": "Grids for Laravel 5+ frameworks",
+    "keywords": ["grid", "tables", "html", "laravel", "database", "eloquent", "bootstrap", "laravel-5", "laravel5"],
+    "type": "laravel-library",
+    "license": "proprietary",
+    "homepage": "https://github.com/thenandan/grids",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "config": {
         "secure-http": false,
         "preferred-install": {
@@ -25,21 +27,14 @@
         "optimize-autoloader": true,
         "classmap-authoritative": true
     },
-    "homepage": "https://github.com/thenandan/grids",
-    "type": "laravel-library",
-    "license": "proprietary",
-    "authors": [
-        {
-            "name": "Keshari Nandan",
-            "email": "thenandan4@gmail.com",
-            "role": "Developer"
-        }
-    ],
     "require": {
         "php": ">=7.1.0",
         "laravelcollective/html": "v6.*",
         "illuminate/support": ">=4.2",
         "nayjest/builder": "~2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
     },
     "suggest": {
         "laravelcollective/html": "Required to work with Laravel 5.X",
@@ -50,11 +45,10 @@
             "TheNandan\\Grids\\": "src/"
         }
     },
-    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
-                "ThaNandan\\Grids\\GridsServiceProvider"
+                "TheNandan\\Grids\\GridsServiceProvider"
             ]
         }
     }

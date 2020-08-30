@@ -8,26 +8,26 @@ if (method_exists($cfg, 'isSubmittedOnChange') && $cfg->isSubmittedOnChange()) {
 }
 ?>
 <select
-    class="form-control input-sm"
-    name="<?= $filter->getInputName() ?><?= $cfg->isMultipleMode() ? '[]' : '' ?>"
-    <?= $onchange ?>
-    <?= ($size = $cfg->getSize()) ? 'size="'.$size.'"' : '' ?>
-    <?= ($cfg->isMultipleMode()) ? 'multiple="multiple"' : '' ?>
+    class="form-control form-control-sm"
+    name="<?php echo $filter->getInputName() ?><?= $cfg->isMultipleMode() ? '[]' : '' ?>"
+    <?php echo $onchange ?>
+    <?php echo ($size = $cfg->getSize()) ? 'size="'.$size.'"' : '' ?>
+    <?php echo ($cfg->isMultipleMode()) ? 'multiple="multiple"' : '' ?>
     >
-    <?= (!$cfg->isMultipleMode()) ? '<option value="">--//--</option>' : '' ?>
+    <?php echo (!$cfg->isMultipleMode()) ? '<option value="">--//--</option>' : '' ?>
     <?php foreach ($filter->getConfig()->getOptions() as $value => $label): ?>
         <?php
         $maybe_selected = (
             (
-                (is_array($filter->getValue()) && in_array($value, $filter->getValue())) ||
+                (is_array($filter->getValue()) && in_array($value, $filter->getValue(), false)) ||
                 $filter->getValue() == $value
             )
             && $filter->getValue() !== ''
             && $filter->getValue() !== null
         ) ? 'selected="selected"' : ''
         ?>
-        <option <?= $maybe_selected ?> value="<?= $value ?>">
-            <?= $label ?>
+        <option <?php echo $maybe_selected ?> value="<?php echo $value ?>">
+            <?php echo $label ?>
         </option>
     <?php endforeach ?>
 </select>

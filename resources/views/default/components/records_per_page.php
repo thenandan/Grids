@@ -6,7 +6,7 @@ echo \Form::select(
     $component->getVariants(),
     $component->getValue(),
     [
-        'class' => "form-control input-sm grids-control-records-per-page",
+        'class' => "form-control form-control-sm grids-control-records-per-page",
         'style' => 'display: inline; width: 80px; margin-right: 10px'
     ]
 );

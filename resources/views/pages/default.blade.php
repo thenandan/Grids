@@ -3,7 +3,7 @@
 </form>
 
 <div class="container-fluid">
-    <div class="card">
+    <div class="card" style="margin-bottom: 0; box-shadow: none">
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <div class="grid">
@@ -13,12 +13,12 @@
         </div>
     </div>
 </div>
-<div class="ajax-loader" style="position: absolute !important; top: 25%; left: 50%">
-    <img src="{{ asset('img/loader.svg') }}" />
+<div class="ajax-loader" style="position: absolute !important; top: 25%; left: 50%; display: none">
+    <img src="{{ asset('vendor/grids/loader.svg') }}" />
 </div>
 @section('grid_js')
-    <script src="{{ asset('grid/grid.js') }}"></script>
+    <script src="{{ asset('vendor/grids/grid.js') }}"></script>
 @endsection
 @section('grid_css')
-    <link href="{{ asset('grid/grid.css') }}">
+    <link href="{{ asset('vendor/grids/grid.css') }}">
 @endsection
