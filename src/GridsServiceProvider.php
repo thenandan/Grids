@@ -45,6 +45,7 @@ class GridsServiceProvider extends BaseServiceProvider
 
 
         $this->loadViewsFrom($views_path, 'grids');
+        $this->loadViewsFrom($views_path.'/pages', 'grids');
         $this->loadTranslationsFrom($pkg_path . '/resources/lang', 'grids');
 
 
