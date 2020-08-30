@@ -107,7 +107,7 @@ class TheNandanGrid
      * @param $datePicker
      * @param $name
      */
-    public function setDateRangePicker($datePicker, $name)
+    private function setDateRangePicker($datePicker, $name)
     {
         $filtersRow = $this->gridConfig->getComponentByNameRecursive(FiltersRow::NAME);
         $filtersRow->addComponent($datePicker);
@@ -154,7 +154,7 @@ class TheNandanGrid
      *
      * @return ExcelExport
      */
-    public function setExcelExport($fileName): ExcelExport
+    private function setExcelExport($fileName): ExcelExport
     {
         return (new ExcelExport())->setFileName($fileName);
     }
@@ -165,7 +165,7 @@ class TheNandanGrid
      *
      * @return HtmlTag
      */
-    public function setHtmlTag(array $attributes, $component): HtmlTag
+    private function setHtmlTag(array $attributes, $component): HtmlTag
     {
         return (new HtmlTag())
             ->setAttributes($attributes)
@@ -217,7 +217,7 @@ class TheNandanGrid
         return (new TFoot())->setComponents($components);
     }
 
-    public function getCsvExport($fileName)
+    protected function getCsvExport($fileName)
     {
         return (new CsvExport())->setFileName($fileName);
     }
@@ -226,7 +226,7 @@ class TheNandanGrid
     /**
      *
      */
-    public function setDefaultComponents(): void
+    private function setDefaultComponents(): void
     {
         $pagination = new Pager();
         $columnHeadersRow = new ColumnHeadersRow();
