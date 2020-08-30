@@ -113,9 +113,9 @@ class TheNandanGrid
         $filtersRow->addComponent($datePicker);
         if (!$this->hasDateRangePicker) {
             $renderAssets = (new RenderFunc(function () {
-                return HTML::style(asset('grid/datepicker.css'))
-                    .HTML::script(asset('grid/moment.min.js'))
-                    .HTML::script(asset('grid/datepicker.min.js'));
+                return HTML::style(asset('vendor/grids/datepicker.css'))
+                    .HTML::script(asset('vendor/grids/moment.min.js'))
+                    .HTML::script(asset('vendor/grids/datepicker.min.js'));
             }))
                 ->setRenderSection('filters_row_column_'.$name);
             $filtersRow->addComponent($renderAssets);
