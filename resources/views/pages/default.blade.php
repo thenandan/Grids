@@ -14,11 +14,11 @@
     </div>
 </div>
 <div class="ajax-loader" style="position: absolute !important; top: 25%; left: 50%; display: none">
-    <img src="{{ asset('img/loader.svg') }}" />
+    <img src="{{ asset('vendor/grids/loader.svg') }}" />
 </div>
 @section('grid_js')
-    <script src="{{ asset('grid/grid.js') }}"></script>
+    <script src="{{ asset('vendor/grids/grid.js') }}"></script>
 @endsection
 @section('grid_css')
-    <link href="{{ asset('grid/grid.css') }}">
+    <link href="{{ asset('vendor/grids/grid.css') }}">
 @endsection
