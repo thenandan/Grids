@@ -7,7 +7,7 @@
 use TheNandan\Grids\Components\ExcelExport;
 ?>
 <span>
-    <a data-toggle="tooltip" data-placement="bottom" title="Excel Export"
+    <a data-toggle="tooltip" data-placement="bottom" title="Excel Download"
         href="<?php echo $grid
             ->getInputProcessor()
             ->getUrl([ExcelExport::INPUT_PARAM => 1])
@@ -15,6 +15,6 @@ use TheNandan\Grids\Components\ExcelExport;
         class="btn btn-sm btn-default"
         >
         <i class="fas fa-file-excel"></i>
-        Export
+        Download
     </a>
 </span>
