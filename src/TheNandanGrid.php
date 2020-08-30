@@ -245,10 +245,10 @@ class TheNandanGrid
         $paginationTag = $this->setHtmlTag(['class' => 'float-right'], $pagination);
         $showingRecordsTag = $this->setHtmlTag(['class' => 'float-left'], $showingRecords);
         $head[] = $recordsPerPageTag;
-//        $head[] = $resetFiltersButtonTag;
+        $head[] = $resetFiltersButtonTag;
         $head[] = $exportCsvTag;
 //        $head[] = $exportExcelTag;
-        $head[] = $columnsHiderTag;
+//        $head[] = $columnsHiderTag;
         $tfoot[] = $showingRecordsTag;
         $tfoot[] = $paginationTag;
         $headOneCellRow = $this->getOneCellRow($head);
