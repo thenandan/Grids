@@ -1,6 +1,6 @@
 <?php
 /** @var TheNandan\Grids\Components\Filter $component */
-$id = uniqid('', true);
+$id = uniqid();
 ?>
 <?php if($component->getLabel()): ?>
     <span><?php echo $component->getLabel() ?></span>

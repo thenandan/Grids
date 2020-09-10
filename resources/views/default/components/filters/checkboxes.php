@@ -2,7 +2,7 @@
 /** @let TheNandan\Grids\Components\SelectFilter $component */
 $value = $component->getValue();
 if (!is_array($value)) $value = [];
-$id = uniqid('', true) . mt_rand();
+$id = uniqid() . mt_rand();
 ?>
 <div class="btn-group">
     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">

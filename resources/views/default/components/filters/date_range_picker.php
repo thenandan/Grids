@@ -1,6 +1,6 @@
 <?php
 /** @let TheNandan\Grids\Components\Filters\DateRangePicker $component */
-$id = uniqid('', true);
+$id = uniqid();
 ?>
 <?php if($component->getLabel()): ?>
     <span>
