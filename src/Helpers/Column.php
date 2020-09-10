@@ -192,7 +192,7 @@ class Column
     /**
      * @return $this
      */
-    public function setDateRangeFilter(): Column
+    public function setDateRangeFilter()
     {
         $this->filter = new DateRangeFilter($this->getName());
         $this->grid->setDateRangePicker($this->filter->getFilter(), $this->getName());

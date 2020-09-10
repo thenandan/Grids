@@ -2,8 +2,10 @@
 
 namespace TheNandan\Grids;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\View;
 
@@ -20,6 +22,11 @@ abstract class BaseGrid
     protected $grid;
 
     /**
+     * @var $relations
+     */
+    protected $relations = [];
+
+    /**
      * BaseGrid constructor.
      */
     public function __construct()
@@ -30,9 +37,9 @@ abstract class BaseGrid
     /**
      * Set root model for the grid query
      *
-     * @return Model
+     * @return Model|Builder|string
      */
-    abstract protected function setModel(): Model;
+    abstract protected function setModel();
 
     /**
      * Configure your grid
@@ -46,7 +53,18 @@ abstract class BaseGrid
      */
     public function getGrid()
     {
-        $this->grid->setGridConfig($this->setModel()->newQuery());
+        $query = $this->setModel();
+
+        if (is_string($query)) {
+            $query = new $query();
+        }
+
+        if (!empty($this->relations)) {
+            $query->with($this->relations);
+        }
+
+        $query = $query->newQuery();
+        $this->grid->setGridConfig($query);
         $this->configureGrid();
         if (isset($this->name)) {
             $this->grid->setGridName($this->name);
