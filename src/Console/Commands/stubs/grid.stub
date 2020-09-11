@@ -3,6 +3,7 @@
 namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use TheNandan\Grids\BaseGrid;
 
 class GridClass extends BaseGrid
