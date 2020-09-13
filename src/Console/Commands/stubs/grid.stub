@@ -13,7 +13,7 @@ class GridClass extends BaseGrid
      *
      * @return Model|Builder|string
      */
-    protected function setModel()
+    protected function setModel(Request $request, $params = [])
     {
         // return new model instance
     }

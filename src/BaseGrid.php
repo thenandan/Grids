@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 abstract class BaseGrid
@@ -35,11 +36,11 @@ abstract class BaseGrid
     }
 
     /**
-     * Set root model for the grid query
-     *
-     * @return Model|Builder|string
+     * @param Request $request
+     * @param array $params
+     * @return mixed
      */
-    abstract protected function setModel();
+    abstract protected function setModel(Request $request, array $params);
 
     /**
      * Configure your grid
@@ -49,11 +50,14 @@ abstract class BaseGrid
     abstract protected function configureGrid(): void;
 
     /**
+     * @param Request $request
+     * @param array $params
+     *
      * @return View|string
      */
-    public function getGrid()
+    public function getGrid(Request $request, $params = [])
     {
-        $query = $this->setModel();
+        $query = $this->setModel($request, $params);
 
         if (is_string($query)) {
             $query = new $query();
@@ -76,13 +80,18 @@ abstract class BaseGrid
      * This method can be used to return the grid response
      *
      * @param $view
-     * @param false $isAjax
+     * @param Request $request
+     * @param array $params
+     *
      * @return Application|Factory|View|\Illuminate\View\View|string
      */
-    public static function render($view, $isAjax = false)
+    public static function render($view, Request $request, $params = [])
     {
-        $grid = (new static())->getGrid();
-        if ($isAjax) {
+        if (null !== $request->route()) {
+            $params = array_merge($params, $request->route()->parameters());
+        }
+        $grid = (new static())->getGrid($request, $params);
+        if ($request->ajax()) {
             return $grid;
         }
         return \view($view, ['grid' => $grid]);
