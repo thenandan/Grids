@@ -36,7 +36,13 @@ class SearchFilter
         $this->setFilteringFunc(function ($val, EloquentDataProvider $dp) use ($relation, $name) {
             $builder = $dp->getBuilder();
             $builder->whereHas($relation, function ($query) use ($val, $name) {
-                $query->where($name, $this->operator, $this->operator == TheNandanGrid::OPERATOR_LIKE ? '%'.$val.'%' : $val);
+                $val = strtolower($val);
+                if ($this->operator === TheNandanGrid::OPERATOR_LIKE) {
+                    $query->whereRaw("LOWER($name)='%$val%'");
+                } else {
+                    $query->whereRaw("LOWER($name)='$val'");
+                }
+                //$query->where($name, $this->operator, $this->operator == TheNandanGrid::OPERATOR_LIKE ? '%'.$val.'%' : $val);
             });
         });
     }

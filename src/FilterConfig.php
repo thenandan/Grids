@@ -124,9 +124,6 @@ class FilterConfig
 
     public function getId()
     {
-        if (is_array($this->getName()) || is_array($this->getOperator())) {
-            dd($this->getName(), $this->getOperator());
-        }
         return $this->getName() . '-' . $this->getOperator();
     }
 }
