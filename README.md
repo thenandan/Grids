@@ -2,7 +2,7 @@ Grids
 =====
 
 ### `Data Grids Framework for Laravel`
-This package is forked from [Nayjest/Grids](https://github.com/Nayjest/Grids) and is wrapper for the package
+This package is forked from [Nayjest/Grids](https://github.com/Nayjest/Grids) and is wrapper for the package,
 does not support (laravel < 5) and used bootstrap 4 by default.
 
 ## Requirements
@@ -28,7 +28,7 @@ does not support (laravel < 5) and used bootstrap 4 by default.
 ```php
     php artisan make:grid CompanyGrid
 ```
-This will generate the below CompanyGrid class as below - 
+This will generate the CompanyGrid class as below - 
 ```php
 <?php
 
@@ -110,10 +110,10 @@ class CompanyGrid extends BaseGrid
     }
 }
 ```
-That's all, Our grid is configured.
+That's all, our grid is configured.
 
-## Rendering the in UI
-Create a blade(view) file (called company.blade.php) and include the grid in it. see below example - 
+## Rendering the Grid in UI
+Create a blade(view) file (ex. company.blade.php) and include the grid in it. see below example - 
 ```blade
 @extends('layouts.app')
 
@@ -123,7 +123,7 @@ Create a blade(view) file (called company.blade.php) and include the grid in it.
 
 ```
 
-#Note
+# Note
 Make you to add the below in your main layout -
 1. In you header - 
 ```blade
@@ -134,6 +134,7 @@ Make you to add the below in your main layout -
 @yield('grid_js')
 ```
 Now create you route and return the company view. You will see a grid something similar to following.
+
 ![screenshot](https://opnsrc.s3.ap-south-1.amazonaws.com/grid.png)
  
  
@@ -142,18 +143,18 @@ Now create you route and return the company view. You will see a grid something 
 * setDefaultPageSize($number) - Set the default page size.
 * setCachingTime($timeInMinute) - Set the caching time in minute.
 * addColumn($column, $label = false, $relation = false) - Add a new column in grid.
-* setRecordsPerPage(array $recordsPerPage) - Set report perPage dropdown list.
+* setRecordsPerPage(array $recordsPerPage) - Set records perPage dropdown list.
 
 ## Available nested column methods
 * setSortable() - When used column becomes sortable
-* setCallback($function) - Can be used to customize the value of the cell - Returned value will be the value of cell
-* shorten(int $noOfChar = 20) - Can be used to limit the no. of character in the value,  When used below methods become available
+* setCallback($function) - Can be used to customize the value of the cell
+* shorten(int $noOfChar = 20) - Can be used to limit the no. of character in the grid cell,  When used below methods become available
     * setTitle() - Set the cell original value in html title attribute
     * setToolTip($isHtml = false) - Set the cell original value in tooltip
-    * setPopover($isHtml = false, $title = null) - Set the cell original value in a popover, Here $title variable is can be used to set the title of popover
+    * setPopover($isHtml = false, $title = null) - Set the cell original value in a popover, Here $title variable can be used to set the title of popover
 * setLink($link, $name) - Can be used to set a link
 * setSearchFilter($operator = TheNandanGrid::OPERATOR_LIKE) - Can be used to make the column searchable
-* More filter is coming soon - 
+* More methods are coming soon - 
 
 
 ## License

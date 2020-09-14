@@ -2,9 +2,12 @@
 
 namespace TheNandan\Grids;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 abstract class BaseGrid
@@ -20,6 +23,11 @@ abstract class BaseGrid
     protected $grid;
 
     /**
+     * @var $relations
+     */
+    protected $relations = [];
+
+    /**
      * BaseGrid constructor.
      */
     public function __construct()
@@ -28,11 +36,11 @@ abstract class BaseGrid
     }
 
     /**
-     * Set root model for the grid query
-     *
-     * @return Model
+     * @param Request $request
+     * @param array $params
+     * @return mixed
      */
-    abstract protected function setModel(): Model;
+    abstract protected function setModel(Request $request, array $params);
 
     /**
      * Configure your grid
@@ -42,11 +50,25 @@ abstract class BaseGrid
     abstract protected function configureGrid(): void;
 
     /**
+     * @param Request $request
+     * @param array $params
+     *
      * @return View|string
      */
-    public function getGrid()
+    public function getGrid(Request $request, $params = [])
     {
-        $this->grid->setGridConfig($this->setModel()->newQuery());
+        $query = $this->setModel($request, $params);
+
+        if (is_string($query)) {
+            $query = new $query();
+        }
+
+        if (!empty($this->relations)) {
+            $query->with($this->relations);
+        }
+
+        $query = $query->newQuery();
+        $this->grid->setGridConfig($query);
         $this->configureGrid();
         if (isset($this->name)) {
             $this->grid->setGridName($this->name);
@@ -58,13 +80,18 @@ abstract class BaseGrid
      * This method can be used to return the grid response
      *
      * @param $view
-     * @param false $isAjax
+     * @param Request $request
+     * @param array $params
+     *
      * @return Application|Factory|View|\Illuminate\View\View|string
      */
-    public static function render($view, $isAjax = false)
+    public static function render($view, Request $request, $params = [])
     {
-        $grid = (new static())->getGrid();
-        if ($isAjax) {
+        if (null !== $request->route()) {
+            $params = array_merge($params, $request->route()->parameters());
+        }
+        $grid = (new static())->getGrid($request, $params);
+        if ($request->ajax()) {
             return $grid;
         }
         return \view($view, ['grid' => $grid]);

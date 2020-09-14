@@ -3,6 +3,7 @@
 namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use TheNandan\Grids\BaseGrid;
 
 class GridClass extends BaseGrid
@@ -10,9 +11,9 @@ class GridClass extends BaseGrid
     /**
      * Set root model for the grid query
      *
-     * @return Model
+     * @return Model|Builder|string
      */
-    protected function setModel(): Model
+    protected function setModel(Request $request, $params = [])
     {
         // return new model instance
     }

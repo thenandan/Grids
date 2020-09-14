@@ -107,7 +107,7 @@ class TheNandanGrid
      * @param $datePicker
      * @param $name
      */
-    private function setDateRangePicker($datePicker, $name)
+    public function setDateRangePicker($datePicker, $name)
     {
         $filtersRow = $this->gridConfig->getComponentByNameRecursive(FiltersRow::NAME);
         $filtersRow->addComponent($datePicker);
